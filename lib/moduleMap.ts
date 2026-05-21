@@ -1,0 +1,111 @@
+/**
+ * Day → Module 映射表
+ * 从 roadmap/30-day.md、60-day.md、90-day.md 提取
+ */
+export interface DayInfo {
+  day: number;
+  phase: number;
+  title: string;
+  moduleId: string; // e.g. "M01-ai-workbench"
+  moduleFile: string; // e.g. "modules/phase-1/M01-ai-workbench.md"
+  projectId?: string; // 关联项目
+  description: string;
+}
+
+export const DAY_MAP: Record<number, DayInfo> = {
+  // Phase 1
+  1: { day: 1, phase: 1, title: "AI 工作台搭建", moduleId: "M01-ai-workbench", moduleFile: "modules/phase-1/M01-ai-workbench.md", description: "安装 Cursor/Python，完成第一个 Hello 自动化" },
+  2: { day: 2, phase: 1, title: "配置 AI 协作规则", moduleId: "M01-ai-workbench", moduleFile: "modules/phase-1/M01-ai-workbench.md", description: "配置 .cursor/rules，写个人「AI 协作规则」" },
+  3: { day: 3, phase: 1, title: "读懂 AI 代码（上）", moduleId: "M02-read-ai-code", moduleFile: "modules/phase-1/M02-read-ai-code.md", description: "让 AI 写脚本，你逐行标注「懂/不懂」" },
+  4: { day: 4, phase: 1, title: "读懂 AI 代码（下）", moduleId: "M02-read-ai-code", moduleFile: "modules/phase-1/M02-read-ai-code.md", description: "完成代码审查清单练习（3 个小脚本）" },
+  5: { day: 5, phase: 1, title: "文件监听入门", moduleId: "M03-file-watcher", moduleFile: "modules/phase-1/M03-file-watcher.md", description: "监听 Downloads，新文件自动分类", projectId: "P01" },
+  6: { day: 6, phase: 1, title: "文件监听进阶", moduleId: "M03-file-watcher", moduleFile: "modules/phase-1/M03-file-watcher.md", description: "加重命名规则 + 日志输出", projectId: "P01" },
+  7: { day: 7, phase: 1, title: "P01 验收", moduleId: "M03-file-watcher", moduleFile: "modules/phase-1/M03-file-watcher.md", description: "验收 P01 里程碑 1：文件夹自动整理跑通", projectId: "P01" },
+  8: { day: 8, phase: 1, title: "API 调用入门", moduleId: "M04-api-basics", moduleFile: "modules/phase-1/M04-api-basics.md", description: "调用公开 API（汇率/天气），保存 JSON" },
+  9: { day: 9, phase: 1, title: "API 数据导出", moduleId: "M04-api-basics", moduleFile: "modules/phase-1/M04-api-basics.md", description: "解析 JSON，导出 CSV" },
+  10: { day: 10, phase: 1, title: "API 错误处理", moduleId: "M04-api-basics", moduleFile: "modules/phase-1/M04-api-basics.md", description: "加错误处理：网络失败时不崩溃" },
+  11: { day: 11, phase: 1, title: "配置管理（上）", moduleId: "M05-config-env", moduleFile: "modules/phase-1/M05-config-env.md", description: "把 API Key 移出代码，用 .env" },
+  12: { day: 12, phase: 1, title: "配置管理（下）", moduleId: "M05-config-env", moduleFile: "modules/phase-1/M05-config-env.md", description: "多环境配置（dev/prod 路径）" },
+  13: { day: 13, phase: 1, title: "日志基础", moduleId: "M06-logging-basics", moduleFile: "modules/phase-1/M06-logging-basics.md", description: "统一 logging 格式" },
+  14: { day: 14, phase: 1, title: "P01 完整版验收", moduleId: "M06-logging-basics", moduleFile: "modules/phase-1/M06-logging-basics.md", description: "验收 P01 完整版：整理 + API 报表合并", projectId: "P01" },
+  15: { day: 15, phase: 1, title: "批处理入门", moduleId: "M07-schedule-batch", moduleFile: "modules/phase-1/M07-schedule-batch.md", description: "批量重命名 100 个 SKU 图片" },
+  16: { day: 16, phase: 1, title: "定时任务", moduleId: "M07-schedule-batch", moduleFile: "modules/phase-1/M07-schedule-batch.md", description: "Windows 任务计划 / cron 定时运行" },
+  17: { day: 17, phase: 1, title: "干跑与备份", moduleId: "M07-schedule-batch", moduleFile: "modules/phase-1/M07-schedule-batch.md", description: "干跑模式（dry-run）+ 操作前备份" },
+  18: { day: 18, phase: 1, title: "代码审查（上）", moduleId: "M08-code-review", moduleFile: "modules/phase-1/M08-code-review.md", description: "用审查模板审 AI 生成的代码" },
+  19: { day: 19, phase: 1, title: "代码审查（中）", moduleId: "M08-code-review", moduleFile: "modules/phase-1/M08-code-review.md", description: "故意引入 3 个 bug，练习定位" },
+  20: { day: 20, phase: 1, title: "代码审查（下）", moduleId: "M08-code-review", moduleFile: "modules/phase-1/M08-code-review.md", description: "写 5 条 lessons_learned" },
+  21: { day: 21, phase: 1, title: "复盘日", moduleId: "M08-code-review", moduleFile: "modules/phase-1/M08-code-review.md", description: "整理个人 Prompt 库（至少 10 条）" },
+  22: { day: 22, phase: 1, title: "Debug 入门", moduleId: "M09-debug-playbook", moduleFile: "modules/phase-1/M09-debug-playbook.md", description: "读 traceback，用 AI 辅助定位" },
+  23: { day: 23, phase: 1, title: "Debug 进阶", moduleId: "M09-debug-playbook", moduleFile: "modules/phase-1/M09-debug-playbook.md", description: "最小复现 + 二分排查" },
+  24: { day: 24, phase: 1, title: "Debug 实战", moduleId: "M09-debug-playbook", moduleFile: "modules/phase-1/M09-debug-playbook.md", description: "修复一个「AI 写错路径」的真实 bug" },
+  25: { day: 25, phase: 1, title: "30 天毕业（需求）", moduleId: "M10-capstone-30d", moduleFile: "modules/phase-1/M10-capstone-30d.md", description: "选定毕业项目场景，写需求文档", projectId: "P02" },
+  26: { day: 26, phase: 1, title: "30 天毕业（v0.1）", moduleId: "M10-capstone-30d", moduleFile: "modules/phase-1/M10-capstone-30d.md", description: "AI 生成 v0.1，你审查架构", projectId: "P02" },
+  27: { day: 27, phase: 1, title: "30 天毕业（v0.2）", moduleId: "M10-capstone-30d", moduleFile: "modules/phase-1/M10-capstone-30d.md", description: "迭代 v0.2：加日志 + 配置", projectId: "P02" },
+  28: { day: 28, phase: 1, title: "30 天毕业（v0.3）", moduleId: "M10-capstone-30d", moduleFile: "modules/phase-1/M10-capstone-30d.md", description: "迭代 v0.3：加 dry-run + 验收测试", projectId: "P02" },
+  29: { day: 29, phase: 1, title: "30 天毕业（文档）", moduleId: "M10-capstone-30d", moduleFile: "modules/phase-1/M10-capstone-30d.md", description: "文档化：README + 使用说明", projectId: "P02" },
+  30: { day: 30, phase: 1, title: "Phase 1 毕业答辩", moduleId: "M10-capstone-30d", moduleFile: "modules/phase-1/M10-capstone-30d.md", description: "P02 答辩式自测：按验收清单全部通过", projectId: "P02" },
+
+  // Phase 2
+  31: { day: 31, phase: 2, title: "Playwright 安装", moduleId: "M11-playwright-intro", moduleFile: "modules/phase-2/M11-playwright-intro.md", description: "安装 Playwright，打开页面截图", projectId: "P03" },
+  32: { day: 32, phase: 2, title: "元素定位", moduleId: "M11-playwright-intro", moduleFile: "modules/phase-2/M11-playwright-intro.md", description: "定位元素：文本/角色/CSS", projectId: "P03" },
+  33: { day: 33, phase: 2, title: "表单填写", moduleId: "M11-playwright-intro", moduleFile: "modules/phase-2/M11-playwright-intro.md", description: "填写表单 + 点击提交", projectId: "P03" },
+  34: { day: 34, phase: 2, title: "等待策略", moduleId: "M11-playwright-intro", moduleFile: "modules/phase-2/M11-playwright-intro.md", description: "等待策略：networkidle vs selector", projectId: "P03" },
+  35: { day: 35, phase: 2, title: "自动登录", moduleId: "M11-playwright-intro", moduleFile: "modules/phase-2/M11-playwright-intro.md", description: "里程碑：自动登录测试站", projectId: "P03" },
+  36: { day: 36, phase: 2, title: "Cookie 管理", moduleId: "M12-session-cookies", moduleFile: "modules/phase-2/M12-session-cookies.md", description: "保存/加载 Cookie 复用登录" },
+  37: { day: 37, phase: 2, title: "弹窗/iframe", moduleId: "M12-session-cookies", moduleFile: "modules/phase-2/M12-session-cookies.md", description: "处理弹窗、iframe、新标签页" },
+  38: { day: 38, phase: 2, title: "会话过期", moduleId: "M12-session-cookies", moduleFile: "modules/phase-2/M12-session-cookies.md", description: "会话过期检测与重新登录" },
+  39: { day: 39, phase: 2, title: "文件上传", moduleId: "M13-upload-forms", moduleFile: "modules/phase-2/M13-upload-forms.md", description: "文件上传自动化" },
+  40: { day: 40, phase: 2, title: "批量填表", moduleId: "M13-upload-forms", moduleFile: "modules/phase-2/M13-upload-forms.md", description: "批量填表（CSV 驱动）" },
+  41: { day: 41, phase: 2, title: "截图取证", moduleId: "M13-upload-forms", moduleFile: "modules/phase-2/M13-upload-forms.md", description: "截图取证 + 失败 HTML 快照" },
+  42: { day: 42, phase: 2, title: "P03 验收", moduleId: "M13-upload-forms", moduleFile: "modules/phase-2/M13-upload-forms.md", description: "验收 P03：采集 10 条商品数据到 CSV", projectId: "P03" },
+  43: { day: 43, phase: 2, title: "队列设计", moduleId: "M14-queue-design", moduleFile: "modules/phase-2/M14-queue-design.md", description: "设计任务队列 JSON 格式", projectId: "P04" },
+  44: { day: 44, phase: 2, title: "状态机", moduleId: "M14-queue-design", moduleFile: "modules/phase-2/M14-queue-design.md", description: "pending → running → done 状态机", projectId: "P04" },
+  45: { day: 45, phase: 2, title: "并发控制", moduleId: "M14-queue-design", moduleFile: "modules/phase-2/M14-queue-design.md", description: "并发控制：一次只跑 N 个浏览器", projectId: "P04" },
+  46: { day: 46, phase: 2, title: "断点续跑", moduleId: "M14-queue-design", moduleFile: "modules/phase-2/M14-queue-design.md", description: "断点续跑：重启后跳过已完成", projectId: "P04" },
+  47: { day: 47, phase: 2, title: "重试策略", moduleId: "M15-retry-backoff", moduleFile: "modules/phase-2/M15-retry-backoff.md", description: "指数退避重试 3 次" },
+  48: { day: 48, phase: 2, title: "错误分类", moduleId: "M15-retry-backoff", moduleFile: "modules/phase-2/M15-retry-backoff.md", description: "区分可重试/不可重试错误" },
+  49: { day: 49, phase: 2, title: "死信队列", moduleId: "M15-retry-backoff", moduleFile: "modules/phase-2/M15-retry-backoff.md", description: "死信队列：失败任务单独存放" },
+  50: { day: 50, phase: 2, title: "结构化日志", moduleId: "M16-structured-logging", moduleFile: "modules/phase-2/M16-structured-logging.md", description: "JSON 结构化日志" },
+  51: { day: 51, phase: 2, title: "trace_id", moduleId: "M16-structured-logging", moduleFile: "modules/phase-2/M16-structured-logging.md", description: "关联 trace_id 追踪单次任务" },
+  52: { day: 52, phase: 2, title: "每日报告", moduleId: "M16-structured-logging", moduleFile: "modules/phase-2/M16-structured-logging.md", description: "每日汇总报告（成功/失败/耗时）" },
+  53: { day: 53, phase: 2, title: "P04 验收", moduleId: "M16-structured-logging", moduleFile: "modules/phase-2/M16-structured-logging.md", description: "验收 P04：100 任务队列稳定跑完", projectId: "P04" },
+  54: { day: 54, phase: 2, title: "复盘审查", moduleId: "M16-structured-logging", moduleFile: "modules/phase-2/M16-structured-logging.md", description: "审查 Phase 2 前半程代码" },
+  55: { day: 55, phase: 2, title: "更新沉淀", moduleId: "M16-structured-logging", moduleFile: "modules/phase-2/M16-structured-logging.md", description: "更新 prompts/ 与 lessons_learned/" },
+  56: { day: 56, phase: 2, title: "缓冲日", moduleId: "M16-structured-logging", moduleFile: "modules/phase-2/M16-structured-logging.md", description: "补完未通过验收的模块" },
+  57: { day: 57, phase: 2, title: "跨境场景选型", moduleId: "M17-ecommerce-scenarios", moduleFile: "modules/phase-2/M17-ecommerce-scenarios.md", description: "场景选型：库存同步 / 竞品监控 / 报表", projectId: "P05" },
+  58: { day: 58, phase: 2, title: "SKU 映射", moduleId: "M17-ecommerce-scenarios", moduleFile: "modules/phase-2/M17-ecommerce-scenarios.md", description: "SKU 映射表设计与维护", projectId: "P05" },
+  59: { day: 59, phase: 2, title: "多店铺配置", moduleId: "M17-ecommerce-scenarios", moduleFile: "modules/phase-2/M17-ecommerce-scenarios.md", description: "多店铺配置隔离", projectId: "P05" },
+  60: { day: 60, phase: 2, title: "Phase 2 中期检查", moduleId: "M17-ecommerce-scenarios", moduleFile: "modules/phase-2/M17-ecommerce-scenarios.md", description: "P03+P04 合并演示", projectId: "P05" },
+
+  // Phase 3
+  61: { day: 61, phase: 3, title: "ComfyUI API 入门", moduleId: "M18-comfyui-api", moduleFile: "modules/phase-2/M18-comfyui-api.md", description: "ComfyUI API 提交 workflow", projectId: "P06" },
+  62: { day: 62, phase: 3, title: "轮询与下载", moduleId: "M18-comfyui-api", moduleFile: "modules/phase-2/M18-comfyui-api.md", description: "轮询任务状态，下载 output", projectId: "P06" },
+  63: { day: 63, phase: 3, title: "工作流参数化", moduleId: "M18-comfyui-api", moduleFile: "modules/phase-2/M18-comfyui-api.md", description: "workflow JSON 参数化（换输入图）", projectId: "P06" },
+  64: { day: 64, phase: 3, title: "双环境配置", moduleId: "M18-comfyui-api", moduleFile: "modules/phase-2/M18-comfyui-api.md", description: "本地/云端 ComfyUI 双环境配置", projectId: "P06" },
+  65: { day: 65, phase: 3, title: "ComfyUI 里程碑", moduleId: "M18-comfyui-api", moduleFile: "modules/phase-2/M18-comfyui-api.md", description: "批量 10 张图白底处理", projectId: "P06" },
+  66: { day: 66, phase: 3, title: "Agent 架构", moduleId: "M19-agent-architecture", moduleFile: "modules/phase-3/M19-agent-architecture.md", description: "Agent 四件套：Goal/Tools/Memory/Rules" },
+  67: { day: 67, phase: 3, title: "Cursor Agent", moduleId: "M19-agent-architecture", moduleFile: "modules/phase-3/M19-agent-architecture.md", description: "用 Cursor Agent 完成多文件改动" },
+  68: { day: 68, phase: 3, title: "自定义 Tool", moduleId: "M19-agent-architecture", moduleFile: "modules/phase-3/M19-agent-architecture.md", description: "定义 Tool：调用你的 Python 脚本" },
+  69: { day: 69, phase: 3, title: "权限限制", moduleId: "M19-agent-architecture", moduleFile: "modules/phase-3/M19-agent-architecture.md", description: "限制 Agent 权限与 scope" },
+  70: { day: 70, phase: 3, title: "Agent 验收", moduleId: "M19-agent-architecture", moduleFile: "modules/phase-3/M19-agent-architecture.md", description: "Agent 自动跑通 file watcher" },
+  71: { day: 71, phase: 3, title: "多 Agent 角色", moduleId: "M20-multi-agent", moduleFile: "modules/phase-3/M20-multi-agent.md", description: "角色拆分：采集/处理/上传 Agent" },
+  72: { day: 72, phase: 3, title: "消息格式", moduleId: "M20-multi-agent", moduleFile: "modules/phase-3/M20-multi-agent.md", description: "消息格式：Agent 间 JSON handoff" },
+  73: { day: 73, phase: 3, title: "人工审核", moduleId: "M20-multi-agent", moduleFile: "modules/phase-3/M20-multi-agent.md", description: "人工审核节点（Human-in-the-loop）" },
+  74: { day: 74, phase: 3, title: "工具选型", moduleId: "M20-multi-agent", moduleFile: "modules/phase-3/M20-multi-agent.md", description: "Hermes / Cursor 协作选型" },
+  75: { day: 75, phase: 3, title: "双 Agent 串联", moduleId: "M20-multi-agent", moduleFile: "modules/phase-3/M20-multi-agent.md", description: "里程碑：两 Agent 串联 PoC" },
+  76: { day: 76, phase: 3, title: "注册表驱动", moduleId: "M21-comfy-pipeline", moduleFile: "modules/phase-3/M21-comfy-pipeline.md", description: "注册表驱动：SKU → job_id 映射", projectId: "P06" },
+  77: { day: 77, phase: 3, title: "去重排队的", moduleId: "M21-comfy-pipeline", moduleFile: "modules/phase-3/M21-comfy-pipeline.md", description: "去重（hash）再进 GPU 队列", projectId: "P06" },
+  78: { day: 78, phase: 3, title: "对名归档", moduleId: "M21-comfy-pipeline", moduleFile: "modules/phase-3/M21-comfy-pipeline.md", description: "output 对名与归档", projectId: "P06" },
+  79: { day: 79, phase: 3, title: "失败报告", moduleId: "M21-comfy-pipeline", moduleFile: "modules/phase-3/M21-comfy-pipeline.md", description: "run_report 失败汇总", projectId: "P06" },
+  80: { day: 80, phase: 3, title: "P06 验收", moduleId: "M21-comfy-pipeline", moduleFile: "modules/phase-3/M21-comfy-pipeline.md", description: "验收 P06：50 SKU 批处理闭环", projectId: "P06" },
+  81: { day: 81, phase: 3, title: "图片串联", moduleId: "M22-image-automation", moduleFile: "modules/phase-3/M22-image-automation.md", description: "文件监听 → ComfyUI → 上传 串联" },
+  82: { day: 82, phase: 3, title: "并行处理", moduleId: "M22-image-automation", moduleFile: "modules/phase-3/M22-image-automation.md", description: "Playwright 上传 + ComfyUI 出图 并行" },
+  83: { day: 83, phase: 3, title: "主编排器", moduleId: "M23-orchestration", moduleFile: "modules/phase-3/M23-orchestration.md", description: "主编排器：一个入口启动全流程", projectId: "P07" },
+  84: { day: 84, phase: 3, title: "配置中心", moduleId: "M23-orchestration", moduleFile: "modules/phase-3/M23-orchestration.md", description: "配置中心：一个 YAML 管全部", projectId: "P07" },
+  85: { day: 85, phase: 3, title: "异常告警", moduleId: "M23-orchestration", moduleFile: "modules/phase-3/M23-orchestration.md", description: "异常告警（邮件/钉钉/飞书 webhook）", projectId: "P07" },
+  86: { day: 86, phase: 3, title: "部署上线", moduleId: "M24-deploy-monitor", moduleFile: "modules/phase-3/M24-deploy-monitor.md", description: "开机自启 / 定时 / 健康检查", projectId: "P07" },
+  87: { day: 87, phase: 3, title: "日志轮转", moduleId: "M24-deploy-monitor", moduleFile: "modules/phase-3/M24-deploy-monitor.md", description: "日志轮转与磁盘清理", projectId: "P07" },
+  88: { day: 88, phase: 3, title: "备份策略", moduleId: "M24-deploy-monitor", moduleFile: "modules/phase-3/M24-deploy-monitor.md", description: "备份与回滚策略", projectId: "P07" },
+  89: { day: 89, phase: 3, title: "90 天联调", moduleId: "M25-capstone-90d", moduleFile: "modules/phase-3/M25-capstone-90d.md", description: "90天毕业系统最终联调", projectId: "P07" },
+  90: { day: 90, phase: 3, title: "毕业演示", moduleId: "M25-capstone-90d", moduleFile: "modules/phase-3/M25-capstone-90d.md", description: "P07 答辩：演示 + 文档 + 运维手册", projectId: "P07" },
+};
